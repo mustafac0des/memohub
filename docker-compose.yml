@@ -15,8 +15,11 @@ services:
       retries: 10
 
   backend:
-    build: ./backend
-    env_file: ./backend/.env
+    build:
+      context: ./backend
+    image: mustafac0des/memo-backend:latest  # Docker Hub username
+    env_file:
+      - ./backend/.env  # Must exist
     ports:
       - "5000:5000"
     depends_on:
@@ -24,7 +27,9 @@ services:
         condition: service_healthy
 
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+    image: mustafac0des/memo-frontend:latest  # Docker Hub username
     ports:
       - "5173:5173"
     depends_on:
