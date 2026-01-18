@@ -8,7 +8,7 @@ const sequelize = new Sequelize(
     host: process.env.DB_HOST,
     dialect: "mysql",
     retry: {
-      max: 10  // retries on failure
+      max: 10
     },
     logging: false
   }
