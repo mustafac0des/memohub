@@ -1,18 +1,15 @@
 const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize(
-  process.env.DB_NAME,
-  process.env.DB_USER,
-  process.env.DB_PASSWORD,
+  "memohub",
+  "root",
+  "password",
   {
-    host: process.env.DB_HOST,
-    dialect: "mysql",
-    retry: {
-      max: 10
-    },
-    logging: false
+    host: "localhost",
+    dialect: "mysql"
   }
 );
+
 
 async function connectWithRetry() {
   let connected = false;

@@ -3,7 +3,6 @@ const auth = require("../middleware/auth");
 const Memo = require("../models/Memo");
 const { Op } = require("sequelize");
 
-// Get all memos for a user with optional filtering
 router.get("/", auth, async (req, res) => {
   try {
     const { category, search, sort } = req.query;
@@ -37,7 +36,6 @@ router.get("/", auth, async (req, res) => {
   }
 });
 
-// Get categories for a user
 router.get("/categories", auth, async (req, res) => {
   try {
     const memos = await Memo.findAll({
@@ -58,7 +56,6 @@ router.get("/categories", auth, async (req, res) => {
   }
 });
 
-// Create a new memo
 router.post("/", auth, async (req, res) => {
   try {
     const { content, category = "General", color = "#3b82f6" } = req.body;
@@ -81,7 +78,6 @@ router.post("/", auth, async (req, res) => {
   }
 });
 
-// Update a memo
 router.put("/:id", auth, async (req, res) => {
   try {
     const { content, category, pinned, color } = req.body;
@@ -106,7 +102,6 @@ router.put("/:id", auth, async (req, res) => {
   }
 });
 
-// Delete a memo
 router.delete("/:id", auth, async (req, res) => {
   try {
     const memo = await Memo.findOne({
